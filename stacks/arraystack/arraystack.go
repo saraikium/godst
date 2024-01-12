@@ -25,6 +25,7 @@ func (s *Stack[T]) Empty() bool {
 	return s.Size() == 0
 
 }
+
 func (s *Stack[T]) Size() int {
 	return len(s.data)
 }
@@ -51,7 +52,6 @@ func (s *Stack[T]) Pop() (T, error) {
 		return *new(T), fmt.Errorf("Empty Stack.")
 	}
 	element := s.data[s.Size()-1]
-
 	clear(s.data[s.Size()-1:])
 	s.data = s.data[:s.Size()-1]
 
