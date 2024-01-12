@@ -1,5 +1,12 @@
 package doublylinkedlist
 
+import (
+	"github.com/saraikium/godst/lists"
+)
+
+// Type assertion. Checks if DoublyLinkedList implements all the methods of List
+var _ lists.List[any] = (*DoublyLinkedList[any])(nil)
+
 type Node[T any] struct {
 	value    T
 	next     *Node[T]
