@@ -3,8 +3,6 @@ package queues
 import "fmt"
 
 type Queue[T any] struct {
-	head *T
-	tail *T
 	data []T
 }
 

@@ -23,17 +23,29 @@ func TestEnqueue(t *testing.T) {
 
 	v, err := q.Dequeue()
 
+	if q.Size() != 1 {
+		t.Errorf("Size should be 1. got %v", q.Size())
+	}
+
 	if err != nil {
 		t.Errorf("Value should be 5, got=%v", v)
 	}
 
 	v, err = q.Dequeue()
 
+	if q.Size() != 0 {
+		t.Errorf("Size should be 1. got %v", q.Size())
+	}
+
 	if err != nil {
 		t.Errorf("Value should be 6, got=%v", v)
 	}
 
 	_, err = q.Dequeue()
+
+	if q.Size() != 0 {
+		t.Errorf("Size should be 1. got %v", q.Size())
+	}
 
 	if err == nil {
 		t.Errorf("Empty queue should throw an error on Dequeue.")
