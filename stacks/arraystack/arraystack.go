@@ -2,7 +2,6 @@ package arraystack
 
 import (
 	"fmt"
-
 	"github.com/saraikium/godst/stacks"
 )
 
@@ -24,13 +23,18 @@ func New[T any](limit int) *Stack[T] {
 
 func (s *Stack[T]) Empty() bool {
 	return s.Size() == 0
-}
 
+}
 func (s *Stack[T]) Size() int {
 	return len(s.data)
 }
 
-func (s *Stack[T]) Search(v T) bool {
+func (s *Stack[T]) Search(cb func(T) bool) bool {
+	for _, item := range s.data {
+		if cb(item) {
+			return true
+		}
+	}
 	return false
 }
 
