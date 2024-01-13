@@ -107,7 +107,7 @@ func (h *MinHeap[T]) heapifyDown() {
 			smallerChildIndex = h.getRightChildIndex(index)
 		}
 
-		if h.items[index] < h.items[smallerChildIndex] {
+		if h.items[index] <= h.items[smallerChildIndex] {
 			break
 		} else {
 			h.swap(index, smallerChildIndex)
