@@ -51,9 +51,15 @@ func (s *Stack[T]) Pop() (T, error) {
 	if s.Size() == 0 {
 		return *new(T), fmt.Errorf("Empty Stack.")
 	}
+
 	element := s.data[s.Size()-1]
-	clear(s.data[s.Size()-1:])
 	s.data = s.data[:s.Size()-1]
+	// Shrink the slice capacity if necessary
+	if len(s.data) < int(cap(s.data)*2/3) {
+		newData := make([]T, len(s.data))
+		copy(newData, s.data)
+		s.data = newData
+	}
 
 	return element, nil
 }
