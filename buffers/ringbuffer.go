@@ -49,10 +49,10 @@ func (rb *RingBuffer[T]) Deque() (T, error) {
 	return data, nil
 }
 
-func (r *RingBuffer[T]) IsEmpty() bool {
-	return r.head == r.tail
+func (rb *RingBuffer[T]) IsEmpty() bool {
+	return rb.head == rb.tail
 }
 
-func (r *RingBuffer[T]) IsFull() bool {
-	return (r.tail+1)%r.size == r.head
+func (rb *RingBuffer[T]) IsFull() bool {
+	return (rb.tail+1)%rb.size == rb.head
 }
